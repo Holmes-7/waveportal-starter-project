@@ -19,7 +19,7 @@ const App = () => {
 
       if (accounts !== 0) {
         const account = accounts[0];
-        console.log("Fount an authorized account", account);
+        console.log("Found an authorized account", account);
         setCurrentAccount(account);
       } else {
         console.log("No authorized account found");
