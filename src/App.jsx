@@ -20,7 +20,7 @@ const App = () => {
       if (accounts !== 0) {
         const account = accounts[0];
         console.log("Found an authorized account", account);
-        setCurrentAccount(account);
+        setCurrentAccount(account[0]);
       } else {
         console.log("No authorized account found");
       }
@@ -56,7 +56,7 @@ const App = () => {
   return (
     <div className="mainContainer">
       <div className="dataContainer">
-        <div className="header">👋 Hey there! I am Ming.HaoQing</div>
+        <div className="header">👋 Hey there! I am HaoQing</div>
 
         <div className="bio">
           I am farza and I worked on self-driving cars so that's pretty cool
