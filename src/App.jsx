@@ -16,6 +16,7 @@ const App = () => {
       }
 
       const accounts = await ethereum.request({ method: "eth_accounts" });
+      console.log("s", accounts);
 
       if (accounts.length === 0) {
         const account = accounts[0];
@@ -67,10 +68,9 @@ const App = () => {
           Wave at Me
         </button>
         {!currentAccount && (
-          <button
-            className="waveButton"
-            onClick={() => connectWallet()}
-          ></button>
+          <button className="waveButton" onClick={() => connectWallet()}>
+            Connect Wallet
+          </button>
         )}
       </div>
     </div>
