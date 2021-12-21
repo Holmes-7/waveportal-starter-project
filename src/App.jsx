@@ -66,7 +66,7 @@ const App = () => {
           signer
         );
         let count = await wavePortalContract.getTotalWaves();
-        console.log("Retrived wave count: ", count);
+        console.log("Retrived wave count: ", count.toNumber());
 
         const waveTxn = await wavePortalContract.wave();
         console.log("Mining...", waveTxn.hash);
@@ -75,7 +75,7 @@ const App = () => {
         console.log("Mined --", waveTxn.hash);
 
         count = await wavePortalContract.getTotalWaves();
-        console.log("Retreived total wave count: ", count);
+        console.log("Retreived total wave count: ", count.toNumber());
       } else {
         console.log("Ethereum object doesn't exist");
       }
