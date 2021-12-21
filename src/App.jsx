@@ -66,7 +66,7 @@ const App = () => {
           signer
         );
         let count = wavePortalContract.getTotalWaves();
-        console.log("Retrived wave count: ", count.toNumber());
+        console.log("Retrived wave count: ", count);
         const waveTxn = await wavePortalContract.wave();
         console.log("Mining...", waveTxn.hash);
         await waveTxn.wait();
