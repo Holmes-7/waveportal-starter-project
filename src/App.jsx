@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { ethers } from "ethers";
+// import { ethers } from "ethers";
 import "./App.css";
-import abi from "../utils/WavePortal.json";
+import abi from "./utils/WavePortal.json";
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
-  const contractAddress = "0xE35c353b4b013E83Ad26C541cB76abdAbDF8D8D6";
+  // const contractAddress = "0xE35c353b4b013E83Ad26C541cB76abdAbDF8D8D6";
   const contractABI = abi.abi;
 
   const checkIfWalletIsConnected = async () => {
