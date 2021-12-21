@@ -5,7 +5,7 @@ import abi from "./utils/WavePortal.json";
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
-  const contractAddress = "0xE35c353b4b013E83Ad26C541cB76abdAbDF8D8D6";
+  const contractAddress = "0x4C2c6E7ec4472CB5CB006fD2848ADe0963E1FAbA";
   const contractABI = abi.abi;
 
   const checkIfWalletIsConnected = async () => {
@@ -67,10 +67,13 @@ const App = () => {
         );
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrived wave count: ", count);
+
         const waveTxn = await wavePortalContract.wave();
         console.log("Mining...", waveTxn.hash);
+
         await waveTxn.wait();
         console.log("Mined --", waveTxn.hash);
+
         count = await wavePortalContract.getTotalWaves();
         console.log("Retreived total wave count: ", count);
       } else {
