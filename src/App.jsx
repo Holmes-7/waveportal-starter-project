@@ -54,33 +54,32 @@ const App = () => {
     }
   };
 
-  // const wave = async () => {
-  //   try {
-  //     const { ethereum } = window;
-
-  //     if (ethereum) {
-  //       const provider = new ethers.providers.Web3Provider(ethereum);
-  //       const signer = provider.getSigner();
-  //       const wavePortalContract = new ethers.Contract(
-  //         contractAddress,
-  //         contractABI,
-  //         signer
-  //       );
-  //       let count = wavePortalContract.getWaveTotal();
-  //       console.log("Retrived wave count: ", count.toNumber());
-  //       const waveTxn = await wavePortalContract.wave();
-  //       console.log("Mining...", waveTxn.hash);
-  //       await waveTxn.wait();
-  //       console.log("Mined --", waveTxn.hash);
-  //       count = wavePortalContract.getWaveTotal();
-  //       console.log("Retreived total wave count: ", count);
-  //     } else {
-  //       console.log("Ethereum object doesn't exist");
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const wave = async () => {
+    //   try {
+    //     const { ethereum } = window;
+    //     if (ethereum) {
+    //       const provider = new ethers.providers.Web3Provider(ethereum);
+    //       const signer = provider.getSigner();
+    //       const wavePortalContract = new ethers.Contract(
+    //         contractAddress,
+    //         contractABI,
+    //         signer
+    //       );
+    //       let count = wavePortalContract.getWaveTotal();
+    //       console.log("Retrived wave count: ", count.toNumber());
+    //       const waveTxn = await wavePortalContract.wave();
+    //       console.log("Mining...", waveTxn.hash);
+    //       await waveTxn.wait();
+    //       console.log("Mined --", waveTxn.hash);
+    //       count = wavePortalContract.getWaveTotal();
+    //       console.log("Retreived total wave count: ", count);
+    //     } else {
+    //       console.log("Ethereum object doesn't exist");
+    //     }
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+  };
 
   useEffect(() => {
     checkIfWalletIsConnected();
