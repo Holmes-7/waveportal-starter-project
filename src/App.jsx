@@ -112,7 +112,7 @@ const App = () => {
 
         setAllWaves(wavesCleaned);
       } else {
-        console.log();
+        console.log("Ethereum object doesn't exist");
       }
     } catch (err) {}
   };
