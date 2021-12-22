@@ -70,7 +70,9 @@ const App = () => {
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrived wave count: ", count.toNumber());
 
-        const waveTxn = await wavePortalContract.wave("This is a message");
+        const waveTxn = await wavePortalContract.wave("This is a message", {
+          gasLimit: 300000,
+        });
         console.log("Mining...", waveTxn.hash);
 
         await waveTxn.wait();
@@ -112,8 +114,8 @@ const App = () => {
 
         const wavesCleaned = waves.map((wave) => {
           return {
-            address: wave.address,
-            timestamp: wave.timestamp,
+            address: wave.waver,
+            timestamp: new Date(wave.timestamp),
             message: wave.message,
           };
         });
