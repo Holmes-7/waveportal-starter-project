@@ -115,7 +115,7 @@ const App = () => {
         const wavesCleaned = waves.map((wave) => {
           return {
             address: wave.waver,
-            timestamp: new Date(wave.timestamp),
+            timestamp: new Date(wave.timestamp * 1000),
             message: wave.message,
           };
         });
