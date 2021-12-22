@@ -138,15 +138,20 @@ const App = () => {
             Connect Wallet
           </button>
         )}
-        {
-          allWaves.map((wave, index) => (
-            <div style={{ backgroundColor: "oldlace", marginTop: "16px", padding="8px" }} key={index}>
-              <div>Address: {wave.address}</div>
-              <div>Time: {wave.timestamp.toString()}</div>
-              <div>Message: {wave.message}</div>
-            </div>
-          ))
-        }
+        {allWaves.map((wave, index) => (
+          <div
+            style={{
+              backgroundColor: "oldlace",
+              marginTop: "16px",
+              padding: "8px",
+            }}
+            key={index}
+          >
+            <div>Address: {wave.address}</div>
+            <div>Time: {wave.timestamp.toString()}</div>
+            <div>Message: {wave.message}</div>
+          </div>
+        ))}
       </div>
     </div>
   );
