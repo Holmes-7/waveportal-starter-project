@@ -6,7 +6,7 @@ import abi from "./utils/WavePortal.json";
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [allWaves, setAllWaves] = useState([]);
-  const contractAddress = "0x90944938eB72F04Cfd712b88e1dB5fac7Da4BD54";
+  const contractAddress = "0xF59Cc9D078f20d87Fd69dFaAC0faCc4f49872DFb";
   const contractABI = abi.abi;
 
   const checkIfWalletIsConnected = async () => {
@@ -126,7 +126,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    // checkIfWalletIsConnected();
+    checkIfWalletIsConnected();
     let waveContract;
 
     const onNewWave = (from, timestamp, message) => {
