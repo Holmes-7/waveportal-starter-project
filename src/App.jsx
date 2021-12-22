@@ -71,7 +71,7 @@ const App = () => {
         console.log("Retrived wave count: ", count.toNumber());
 
         const waveTxn = await wavePortalContract.wave("This is a message", {
-          gasLimit: 300000,
+          gasLimit: 500000,
         });
         console.log("Mining...", waveTxn.hash);
 
