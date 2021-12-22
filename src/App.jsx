@@ -5,7 +5,8 @@ import abi from "./utils/WavePortal.json";
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
-  const contractAddress = "0x4C2c6E7ec4472CB5CB006fD2848ADe0963E1FAbA";
+  const [allWaves, setAllWaves] = useState([]);
+  const contractAddress = "0xDdd29e2E0a60FfF005D67986Ca38B6144130104f";
   const contractABI = abi.abi;
 
   const checkIfWalletIsConnected = async () => {
@@ -68,7 +69,7 @@ const App = () => {
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrived wave count: ", count.toNumber());
 
-        const waveTxn = await wavePortalContract.wave();
+        const waveTxn = await wavePortalContract.wave("This is a message");
         console.log("Mining...", waveTxn.hash);
 
         await waveTxn.wait();
@@ -84,6 +85,37 @@ const App = () => {
     }
   };
 
+  const getAllWaves = async () => {
+    try {
+      const { ethereum } = window;
+
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(contractAddress);
+        const signer = provider.getSigner();
+        const wavePortalContract = new ethers.Contract(
+          contractAddress,
+          contractABI,
+          signer
+        );
+
+        const waves = await wavePortalContract.getAllWaves();
+
+        let wavesCleaned = [];
+        waves.forEach((wave) => {
+          wavesCleaned.push({
+            address: wave.waver,
+            timestamp: new Date(wave.timestamp * 1000),
+            message: wave.message,
+          });
+        });
+
+        setAllWaves(wavesCleaned);
+      } else {
+        console.log();
+      }
+    } catch (err) {}
+  };
+
   useEffect(() => {
     checkIfWalletIsConnected();
   }, []);
@@ -91,10 +123,10 @@ const App = () => {
   return (
     <div className="mainContainer">
       <div className="dataContainer">
-        <div className="header">👋 Hey there! I am HaoQing</div>
+        <div className="header">👋 Hey there!</div>
 
         <div className="bio">
-          I am farza and I worked on self-driving cars so that's pretty cool
+          I am Holmes and I worked on self-driving cars so that's pretty cool
           right? Connect your Ethereum wallet and wave at me!
         </div>
 
@@ -106,6 +138,15 @@ const App = () => {
             Connect Wallet
           </button>
         )}
+        {
+          allWaves.map((wave, index) => {
+            <div style={{ backgroundColor: "oldlace", marginTop: "16px", padding="8px" }} key={index}>
+              <div>Address: {wave.address}</div>
+              <div>Time: {wave.timestamp.toString()}</div>
+              <div>Message: {wave.message}</div>
+            </div>
+          })
+        }
       </div>
     </div>
   );
