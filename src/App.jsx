@@ -87,6 +87,7 @@ const App = () => {
   };
 
   const getAllWaves = async () => {
+    console.log("GETALL");
     try {
       const { ethereum } = window;
 
