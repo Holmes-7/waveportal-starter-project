@@ -87,12 +87,11 @@ const App = () => {
   };
 
   const getAllWaves = async () => {
-    console.log("GETALL");
     try {
       const { ethereum } = window;
 
       if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(contractAddress);
+        const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
         const wavePortalContract = new ethers.Contract(
           contractAddress,
