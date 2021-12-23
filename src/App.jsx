@@ -6,7 +6,7 @@ import abi from "./utils/WavePortal.json";
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [allWaves, setAllWaves] = useState([]);
-  const contractAddress = "0xF59Cc9D078f20d87Fd69dFaAC0faCc4f49872DFb";
+  const contractAddress = "0x462EE35e8AcF2c91fa2e62762c7a147Ac37BC7eb";
   const contractABI = abi.abi;
 
   const checkIfWalletIsConnected = async () => {
@@ -62,6 +62,10 @@ const App = () => {
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
+
+        let contractBalance = signer.getBalance().toNumber;
+        console.log("Contract Balance: ", contractBalance);
+
         const wavePortalContract = new ethers.Contract(
           contractAddress,
           contractABI,
@@ -70,9 +74,7 @@ const App = () => {
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrived wave count: ", count.toNumber());
 
-        const waveTxn = await wavePortalContract.wave("This is a message", {
-          gasLimit: 500000,
-        });
+        const waveTxn = await wavePortalContract.wave("This is a message");
         console.log("Mining...", waveTxn.hash);
 
         await waveTxn.wait();
